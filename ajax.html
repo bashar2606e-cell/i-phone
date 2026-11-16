@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+
+        }
+        body{
+            background-color: #222;
+            color: white;
+            display: flex;
+            flex-direction: column;align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        img{
+            border: ;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/4.0.0/jquery.min.js" integrity="sha512-8LENNbXmzI/Gbj+OwXmqR6V4QaUAw0/porPzy1+dQoJqC0JPHedWoe0DDOTL2uHA5XXJyIsPtiMHH86pVlay6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <SCRipt>
+        $.ajax({
+           URL: 'https://randomuser.me/api/',
+           method:"GET",
+           success: function(response){
+           console.log(response)
+           Let firstname = responce.result[0].name.first;
+           Let lastname = responce.result[0].name.last;
+           $("h1").html("Name :"+firstname+" "+lastname)
+
+           let src = response.result[0].picture.large
+              
+           $("img").attr("src",src)
+
+        },
+        error:(function)(err){
+            console.log(err)
+        }
+        })
+    </SCRipt>
+</body>
+</html>

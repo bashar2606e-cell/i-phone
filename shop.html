@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone Cards Collection</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .card-hover {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 28px -10px rgba(0, 0, 0, 0.12);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased min-h-screen p-4 sm:p-6 md:p-8">
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed top-5 right-5 z-50 transform -translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-gray-900 text-white text-xs sm:text-sm px-4 py-3 rounded-xl shadow-xl flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-green-400"></i>
+        <span id="toastMsg">Added to cart</span>
+    </div>
+
+    <!-- Main Container: Direct Cards Grid (No Header, No Navigation) -->
+    <div class="max-w-7xl mx-auto">
+        <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6">
+            <!-- 20 iPhone Cards populated via JS -->
+        </div>
+    </div>
+
+    <script>
+        // Data for 20 iPhone Models
+        const products = [
+            { id: 1, name: "iPhone 15 Pro Max", specs: "256GB - Natural Titanium", price: "1,199", color: "#8E8D8A" },
+            { id: 2, name: "iPhone 15 Pro", specs: "128GB - Blue Titanium", price: "999", color: "#3B4856" },
+            { id: 3, name: "iPhone 15 Plus", specs: "128GB - Pink", price: "899", color: "#E8C5C8" },
+            { id: 4, name: "iPhone 15", specs: "128GB - Black", price: "799", color: "#353935" },
+            { id: 5, name: "iPhone 14 Pro Max", specs: "256GB - Deep Purple", price: "1,099", color: "#4B3F56" },
+            { id: 6, name: "iPhone 14 Pro", specs: "128GB - Space Black", price: "899", color: "#242526" },
+            { id: 7, name: "iPhone 14 Plus", specs: "128GB - Starlight", price: "749", color: "#F0EFEA" },
+            { id: 8, name: "iPhone 14", specs: "128GB - Midnight", price: "699", color: "#1E252B" },
+            { id: 9, name: "iPhone 13 Pro Max", specs: "256GB - Sierra Blue", price: "899", color: "#9BB2C9" },
+            { id: 10, name: "iPhone 13 Pro", specs: "128GB - Graphite", price: "799", color: "#4E4E4E" },
+            { id: 11, name: "iPhone 13", specs: "128GB - Pink Edition", price: "599", color: "#F7D6DB" },
+            { id: 12, name: "iPhone 13 Mini", specs: "128GB - Green", price: "499", color: "#3E5340" },
+            { id: 13, name: "iPhone 12 Pro Max", specs: "256GB - Pacific Blue", price: "749", color: "#294754" },
+            { id: 14, name: "iPhone 12 Pro", specs: "128GB - Gold", price: "649", color: "#E0D0B6" },
+            { id: 15, name: "iPhone 12", specs: "128GB - White", price: "499", color: "#FAF9F6" },
+            { id: 16, name: "iPhone 12 Mini", specs: "64GB - Black", price: "399", color: "#1C1C1E" },
+            { id: 17, name: "iPhone SE (3rd Gen)", specs: "64GB - Midnight", price: "429", color: "#1D232A" },
+            { id: 18, name: "iPhone 11 Pro Max", specs: "256GB - Midnight Green", price: "549", color: "#4E5851" },
+            { id: 19, name: "iPhone 11 Pro", specs: "64GB - Space Gray", price: "449", color: "#535150" },
+            { id: 20, name: "iPhone 11", specs: "128GB - Purple", price: "349", color: "#D1C4E9" }
+        ];
+
+        // Function to generate stylized vector phone illustration
+        function createPhoneSVG(colorHex, modelName) {
+            return `
+            <svg viewBox="0 0 160 260" class="h-44 w-auto drop-shadow-md">
+                <!-- Phone Body Outer Frame -->
+                <rect x="10" y="10" width="140" height="240" rx="28" fill="${colorHex}" stroke="#E5E7EB" stroke-width="2"/>
+                <!-- Inner Screen Border -->
+                <rect x="15" y="15" width="130" height="230" rx="24" fill="#111827"/>
+                <!-- Screen Content Mockup -->
+                <rect x="19" y="19" width="122" height="222" rx="20" fill="url(#screenGrad-${modelName.replace(/\s+/g, '')})"/>
+                <!-- Dynamic Island / Notch -->
+                <rect x="55" y="24" width="50" height="12" rx="6" fill="#000000"/>
+                
+                <!-- Gradients -->
+                <defs>
+                    <linearGradient id="screenGrad-${modelName.replace(/\s+/g, '')}" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#1E293B" />
+                        <stop offset="50%" stop-color="#0F172A" />
+                        <stop offset="100%" stop-color="#334155" />
+                    </linearGradient>
+                </defs>
+            </svg>`;
+        }
+
+        // Render Cards Grid
+        function renderCards() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = products.map(product => `
+                <div class="bg-white rounded-2xl border border-gray-100 p-4 flex flex-col justify-between card-hover shadow-sm">
+                    
+                    <!-- SVG Image Container (Clean background, NO Apple Logo, NO Badges) -->
+                    <div class="w-full h-48 bg-gray-100/70 rounded-xl overflow-hidden mb-4 flex items-center justify-center p-3 relative">
+                        ${createPhoneSVG(product.color, product.name)}
+                    </div>
+
+                    <!-- Details Area -->
+                    <div class="flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base font-semibold text-gray-900 tracking-tight">
+                                ${product.name}
+                            </h3>
+                            <p class="text-xs text-gray-500 mt-1 mb-4">
+                                ${product.specs}
+                            </p>
+                        </div>
+
+                        <!-- Card Footer: Corner Price & Add Button ONLY -->
+                        <div class="pt-3 border-t border-gray-100 flex items-center justify-between mt-auto">
+                            <!-- Direct Price Value at Bottom-Left Corner -->
+                            <span class="text-lg font-bold text-gray-900 leading-none">$${product.price}</span>
+
+                            <!-- Add to Cart Button at Bottom-Right Corner -->
+                            <button onclick="addToCart('${product.name}')" 
+                                    class="bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-xs font-semibold px-3.5 py-2 rounded-xl transition-all shadow-sm flex items-center gap-1.5">
+                                <i class="fa-solid fa-plus text-[10px]"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Add to Cart Toast Function
+        function addToCart(name) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            toastMsg.innerText = `Added ${name} to cart!`;
+            
+            toast.classList.remove('-translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('-translate-y-20', 'opacity-0');
+            }, 2200);
+        }
+
+        // Render on page load
+        window.onload = renderCards;
+    </script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-gold: #fbbf24;
+            --accent-blue: #38bdf8;
+            --border-color: #334155;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .phone-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .phone-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+        }
+
+        .phone-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .phone-title {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            margin: 0;
+        }
+
+        .phone-year {
+            background-color: var(--border-color);
+            color: var(--text-primary);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .spec-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+
+        .spec-list li {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .spec-list li strong {
+            color: var(--text-primary);
+        }
+
+        .price-badge {
+            background: linear-gradient(135deg, #d97706, #b45309);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Apple iPhone Series Overview</h1>
+            <p>From iPhone X (Gold/Classic) up to the futuristic iPhone 18 lineup</p>
+        </header>
+
+        <div class="timeline">
+
+            <!-- iPhone X -->
+            <div class="phone-card">
+                <div class="phone-header">
+                    <h2 class="phone-title">iPhone X</h2>
+                    <span class="phone-year">2017</span>
+                </div>
+                <ul class="spec-list">
+                    <li><strong>Display:</strong> 5.8" Super Retina OLED</li>
+                    <li><strong>Processor:</strong> Apple A11 Bionic</li>
+                    <li><strong>Camera:</strong> Dual 12 MP Rear / 7 MP Front</li>
+                    <li><strong>Special:</strong> Introduction of Face ID & Notch</li>
+                </ul>
+                <div class="price-badge">Used Market (PKR): 25,000 - 32,000</div>
+            </div>
+
+            <!-- iPhone XS / XS Max -->
+            <div class="phone-card">
+                <div class="phone-header">
+                    <h2 class="phone-title">iPhone XS (Gold)</h2>
+                    <span class="phone-year">2018</span>
+                </div>
+                <ul class="spec-list">
+                    <li><strong>Display:</strong> 5.8" Super Retina OLED (Gold Edition)</li>
+                    <li><strong>Processor:</strong> Apple A12 Bionic (7nm)</li>
+                    <li><strong>Camera:</strong> 12 MP Dual with Smart HDR</li>
+                    <li><strong>Special:</strong> Stainless Steel Frame, IP68 Water Resistance</li>
+                </ul>
+                <div class="price-badge">Used Market (PKR): 28,000 - 35,000</div>
+            </div>
+
+            <!-- iPhone 11 Series -->
+            <div class="phone-card">
+                <div class="phone-header">
+                    <h2 class="phone-title">iPhone 11 Series</h2>
+                    <span class="phone-year">2019</span>
+                </div>
+                <ul class="spec-list">
+                    <li><strong>Display:</strong> 6.1" Liquid Retina IPS LCD</li>
+                    <li><strong>Processor:</strong> Apple A13 Bionic</li>
+                    <li><strong>Camera:</strong> Dual 12 MP (Ultra Wide added)</li>
+                    <li><strong>Special:</strong> Vibrant color options & Night Mode</li>
+                </ul>
+                <div class="price-badge">Used Market (PKR): 60,000 - 90,000</div>
+            </div>
+
+            <!-- iPhone 12 Series -->
+            <div class="phone-card">
+                <div class="phone-header">
+                    <h2 class="phone-title">iPhone 12 Series</h2>
+                    <span class="phone-year">2020</span>
+                </div>
+                <ul class="spec-list">
+                    <li><strong>Display:</strong> 6.1" Super Retina XDR OLED</li>
+                    <li><strong>Processor:</strong> Apple A14 Bionic (5nm)</li>
+                    <li><strong>Connectivity:</strong> First 5G Apple Lineup</li>
+                    <li><strong>Special:</strong> Ceramic Shield front, MagSafe support</li>
+                </ul>
+                <div class="price-badge">Used Market (PKR): 95,000 - 140,000</div>
+            </div>
+
+            <!-- iPhone 13 Series -->
+            <div class="phone-card">
+                <div class="phone-header">
+                    <h2 class="phone-title">iPhone 13 Series</h2>
+                    <span class="phone-year">2021</span>
+                </div>
+                <ul class="spec-list">
+                    <li><strong>Display:</strong> 6.1" OLED (Smaller Notch)</li>
+                    <li><strong>Processor:</strong> Apple A15 Bionic</li>
+                    <li><strong>Camera:</strong> Cinematic Mode & Sensor-shift OIS</li>
+                    <li><strong>Special:</strong> Greatly improved battery life</li>
+                </ul>
+                <div class="price-badge">Market Range (PKR): 140,000 - 200,000+</div>
+            </div>
+
+            <!-- iPhone 14 Series -->
+            <div class="phone-card">
+                <div class="phone-header">
+                    <h2 class="phone-title">iPhone 14 Series</h2>
+                    <span class="phone-year">2022</span>
+                </div>
+                <ul class="spec-list">
+                    <li><strong>Display:</strong> 6.1" Super Retina XDR</li>
+                    <li><strong>Processor:</strong> A15 (Base) / A16 Bionic (Pro)</li>
+                    <li><strong>Special:</strong> Dynamic Island introduced on Pro models</li>
+                    <li><strong>Safety:</strong> Crash Detection & Emergency SOS via Satellite</li>
+                </ul>
+                <div class="price-badge">Market Range (PKR): 180,000 - 270,000+</div>
+            </div>
+
+            <!-- iPhone 15 Series -->
+            <div class="phone-card">
+                <div class="phone-header">
+                    <h2 class="phone-title">iPhone 15 Series</h2>
+                    <span class="phone-year">2023</span>
+                </div>
+                <ul class="spec-list">
+                    <li><strong>Display:</strong> Dynamic Island standard across all models</li>
+                    <li><strong>Connectivity:</strong> Transition to USB Type-C Port</li>
+                    <li><strong>Processor:</strong> A16 Bionic / A17 Pro (Titanium build)</li>
+                    <li><strong>Camera:</strong> 48MP Main Camera standard</li>
+                </ul>
+                <div class="price-badge">Market Range (PKR): 230,000 - 350,000+</div>
+            </div>
+
+            <!-- iPhone 16 Series -->
+            <div class="phone-card">
+                <div class="phone-header">
+                    <h2 class="phone-title">iPhone 16 Series</h2>
+                    <span class="phone-year">2024</span>
+                </div>
+                <ul class="spec-list">
+                    <li><strong>Processor:</strong> Apple A18 & A18 Pro chips</li>
+                    <li><strong>Special:</strong> Dedicated Camera Control button</li>
+                    <li><strong>AI:</strong> Built completely around Apple Intelligence</li>
+                    <li><strong>Design:</strong> Slimmer bezels and enhanced durability</li>
+                </ul>
+                <div class="price-badge">Market Range (PKR): Premium Flagship Tier</div>
+            </div>
+
+            <!-- iPhone 17 Series -->
+            <div class="phone-card">
+                <div class="phone-header">
+                    <h2 class="phone-title">iPhone 17 Series</h2>
+                    <span class="phone-year">2025</span>
+                </div>
+                <ul class="spec-list">
+                    <li><strong>Display:</strong> ProMotion (120Hz) expanded to standard models</li>
+                    <li><strong>Processor:</strong> Next-gen 2nm/3nm advanced architecture</li>
+                    <li><strong>Camera:</strong> Advanced 24MP selfie camera upgrades</li>
+                    <li><strong>Special:</strong> Introduction of ultra-slim "Air" variant options</li>
+                </ul>
+                <div class="price-badge">Market Range (PKR): Flagship Pricing</div>
+            </div>
+
+            <!-- iPhone 18 Series -->
+            <div class="phone-card">
+                <div class="phone-header">
+                    <h2 class="phone-title">iPhone 18 Series</h2>
+                    <span class="phone-year">2026</span>
+                </div>
+                <ul class="spec-list">
+                    <li><strong>Processor:</strong> Ultra-fast cutting-edge Silicon</li>
+                    <li><strong>Innovation:</strong> Under-display Face ID tech developments</li>
+                    <li><strong>AI & Ecosystem:</strong> Deeply integrated generative intelligence</li>
+                    <li><strong>Special:</strong> Pinnacle of Apple's modern mobile engineering</li>
+                </ul>
+                <div class="price-badge">Market Range (PKR): Next-Gen Flagship</div>
+            </div>
+
+        </div>
+    </div>
+   <script src="bootstrap-5.3.8-dist/js/bootstrap.min.js"></script>
+</body>
+</html>
